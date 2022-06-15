@@ -2,6 +2,8 @@
 import './App.css';
 import contacts from './Contacts.js';
 import React from 'react';
+import './Contact.css';
+
 
 
 //conditional rendering
@@ -84,14 +86,15 @@ import React from 'react';
 //for styling in JSX
 
 function App() {
-  let contactList = contacts.map( (contact) => {
+  let contactList = contacts.map( (contact, index) => {
     return (
-      <tr className="contact">
-        <td className="name">{contact.first_name.toUpperCase()} {contact.last_name.toUpperCase()}</td>
+      <tr className={`contact ${index % 2 ? "style: shaded" : ""}`}>
+        <td className="name">{contact.first_name} {contact.last_name}</td>
         <td className="email"><a href={`mailto:${contact.email}`}>{contact.email}</a></td>
         <td className="phone">{contact.phone}</td>
       </tr>
   )})
+  
 
   return (
     <div className="App">
